@@ -22,17 +22,33 @@ This Gazebo world is well suited for organizations who are building and testing 
 
 * Create or update a **.rosinstall** file in the root directory of your ROS workspace. Add the following line to **.rosintall**:
     ```
-    - git: {local-name: src/aws-robomaker-small-warehouse-world, uri: 'https://github.com/aws-robotics/aws-robomaker-small-warehouse-world.git', version: master}
+    - git: {local-name: src/aws-robomaker-small-warehouse-world, uri: 'https://github.com/aws-robotics/aws-robomaker-small-warehouse-world.git', version: foxy-devel}
     ```
 * Change the directory to your ROS workspace and run `rosws update`
 
-* Add the following include to the ROS launch file you are using:
-    ```xml
-    <launch>
-    <!-- Launch World -->
-    <include file="$(find aws_robomaker_small_warehouse_world)/launch/small_warehouse.launch"/>
-    ...
-    </launch>
+* Add the following include to the ROS2 launch file you are using:
+    ```python
+    import os
+
+    from ament_index_python.packages import get_package_share_directory
+    from launch import LaunchDescription
+    from launch.actions import IncludeLaunchDescription
+    from launch.launch_description_sources import PythonLaunchDescriptionSource
+
+    def generate_launch_description():
+        warehouse_pkg_dir = get_package_share_directory('aws_robomaker_small_warehouse_world')
+        warehouse_launch_path = os.path.join(warehouse_pkg_dir, 'launch')
+
+        warehouse_world_cmd = IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([warehouse_launch_path, '/no_roof_small_warehouse_launch.py']),
+            launch_arguments={'gui': 'true'}.items()
+        )
+
+        ld = LaunchDescription()
+
+        ld.add_action(warehouse_world_cmd)
+
+        return ld
     ```
 
 * Build your application using `colcon`
@@ -56,13 +72,13 @@ gazebo worlds/small_warehouse.world
 To launch this base Gazebo world without a robot, clone this repository and run the following commands. **Note: ROS and gazebo must already be installed on the host.** 
 
 ```bash
-# build for ROS
+# build for ROS2
 rosdep install --from-paths . --ignore-src -r -y
 colcon build
 
-# run in ROS
+# run in ROS2
 source install/setup.sh
-roslaunch aws_robomaker_small_warehouse_world view_small_warehouse.launch
+ros2 launch aws_robomaker_small_warehouse_world view_small_warehouse.launch gui:=true
 ```
 
 **Visit the [AWS RoboMaker website](https://aws.amazon.com/robomaker/) to learn more about building intelligent robotic applications with Amazon Web Services.**

@@ -1,13 +1,16 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(aws_robomaker_small_warehouse_world)
 
-find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
-)
+find_package(ament_cmake REQUIRED)
 
-catkin_package()
+find_package(gazebo_ros_pkgs REQUIRED)
+
+set(dependencies
+  gazebo_ros_pkgs
+)
 
 install(DIRECTORY launch models worlds maps rviz
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
+ament_package()
