@@ -224,7 +224,7 @@
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
         <range>80</range>
-        <constant>0.01</constant>
+        <constant>0.3</constant>
         <linear>0.01</linear>
         <quadratic>0.001</quadratic>
       </attenuation>
