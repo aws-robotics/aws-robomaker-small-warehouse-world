@@ -20,6 +20,9 @@ install(
 
 ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/aws_robomaker_small_warehouse_world.dsv.in")
 
+ament_export_dependencies(ament_cmake)
+ament_export_dependencies(gazebo_ros)
+
 ################################################################################
 # Macro for ament package
 ################################################################################
