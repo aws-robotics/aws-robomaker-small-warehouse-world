@@ -82,3 +82,6 @@ ros2 launch aws_robomaker_small_warehouse_world no_roof_small_warehouse_launch.p
 
 **Visit the [AWS RoboMaker website](https://aws.amazon.com/robomaker/) to learn more about building intelligent robotic applications with Amazon Web Services.**
 
+## Notes
+- Lighting might vary on different system(s) (e.g brighter on system without CPU and darker on system with GPU)
+- Adjust lighting parameters in .world file as you need
