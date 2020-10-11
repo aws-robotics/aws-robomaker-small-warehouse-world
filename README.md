@@ -2,6 +2,9 @@
 
 ![Gazebo01](docs/images/small_warehouse_gazebo.png)
 
+## AWS Robomaker Small Warehouse World on Gzweb
+
+![Gzweb01](docs/images/gzweb_aws_warehouse.png)
 
 This Gazebo world is well suited for organizations who are building and testing robot applications for warehouse and logistics use cases. 
 
@@ -51,6 +54,26 @@ export GAZEBO_MODEL_PATH=`pwd`/models
 gazebo worlds/small_warehouse.world
 ```
 
+## Example: Running this world on Gazebo headless and running the UI on Gzweb
+
+To open this world in Gzweb, There are two steps,
+
+1) Running the gzserver with the world, change the directory to your ROS workspace root folder and run:
+
+```bash
+export GAZEBO_MODEL_PATH=`pwd`/models
+gzserver worlds/small_warehouse.world
+```
+
+2) Running gzweb, copy the models folder to ~/gzweb/http/client/assets and then run:
+
+```bash
+cp -r ~/aws-robomaker-small-warehouse-world/models/. ~/gzweb/http/client/assets
+cd ~/gzweb
+export GAZEBO_MASTER_URI="http://localhost:11345" # change localhost to IP address of the gzserver machine
+npm start
+```
+
 ## Example: Running this world directly using ROS without a simulated robot
 
 To launch this base Gazebo world without a robot, clone this repository and run the following commands. **Note: ROS and gazebo must already be installed on the host.** 
@@ -64,7 +87,6 @@ colcon build
 source install/setup.sh
 roslaunch aws_robomaker_small_warehouse_world view_small_warehouse.launch
 ```
-
 **Visit the [AWS RoboMaker website](https://aws.amazon.com/robomaker/) to learn more about building intelligent robotic applications with Amazon Web Services.**
 
 ## Notes
