@@ -50,29 +50,47 @@ This Gazebo world is well suited for organizations who are building and testing 
 To open this world in Gazebo, change the directory to your ROS workspace root folder and run:
 
 ```bash
+cd aws-robomaker-small-warehouse-world
 export GAZEBO_MODEL_PATH=`pwd`/models
 gazebo worlds/small_warehouse.world
 ```
 
 ## Example: Running this world on Gazebo headless and running the UI on Gzweb
+*Tested in ROS Kinetic/Melodic, Gazebo 7/9 with node version 8.11.3/10.22.1*
 
 To open this world in Gzweb, There are two steps,
 
-1) Running the gzserver with the world, change the directory to your ROS workspace root folder and run:
+1) In a terminal, change  to your ROS workspace root folder and run gzserver with the small warehouse world:
 
 ```bash
+cd aws-robomaker-small-warehouse-world
 export GAZEBO_MODEL_PATH=`pwd`/models
 gzserver worlds/small_warehouse.world
 ```
 
-2) Running gzweb, copy the models folder to ~/gzweb/http/client/assets and then run:
+2) In another terminal, setup and run GzWeb
+- Clone GzWeb and checkout the correct branch (follow http://gazebosim.org/gzweb#install-collapse-1)
+- Deploy GzWeb
+    - Approach 1: Copy all the Gazebo models from small-warehouse world to gzweb/http/client/assets/, and run the deploy script
 
-```bash
-cp -r ~/aws-robomaker-small-warehouse-world/models/. ~/gzweb/http/client/assets
-cd ~/gzweb
-export GAZEBO_MASTER_URI="http://localhost:11345" # change localhost to IP address of the gzserver machine
-npm start
-```
+    ```bash
+    cp -r ~/aws-robomaker-small-warehouse-world/models/. ~/gzweb/http/client/assets
+    cd ~/gzweb
+    export GAZEBO_MASTER_URI="http://localhost:11345" # change localhost to IP address of the gzserver machine
+    npm run deploy
+    npm start
+    ```
+
+    - Approach 2: without copying the Gazebo models, export Gazebo model path and run the deploy script with `-m local`
+
+    ```bash
+    cd aws-robomaker-small-warehouse-world
+    export GAZEBO_MODEL_PATH=`pwd`/models
+    cd ~/gzweb
+    export GAZEBO_MASTER_URI="http://localhost:11345" # change localhost to IP address of the gzserver machine
+    npm run deploy --- -m local
+    npm start
+    ```
 
 ## Example: Running this world directly using ROS without a simulated robot
 
