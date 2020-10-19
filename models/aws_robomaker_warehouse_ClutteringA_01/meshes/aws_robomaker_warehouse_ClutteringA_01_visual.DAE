@@ -2,9 +2,15 @@
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
   <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2019-05-23T10:22:51Z</created><keywords></keywords><modified>2019-05-23T10:22:51Z</modified><revision></revision><subject></subject><title></title><unit meter="0.010000" name="centimeter"></unit><up_axis>Z_UP</up_axis></asset>
   <library_images>
-    <image id="Map #1123124500-image" name="Map #1123124500"><init_from>../materials/textures/aws_robomaker_warehouse_ClutteringA_01.png</init_from></image>
-    <image id="Map #1123124485-image" name="Map #1123124485"><init_from>../materials/textures/aws_robomaker_warehouse_ClutteringA_02.png</init_from></image>
-    <image id="Map #1123124477-image" name="Map #1123124477"><init_from>../materials/textures/aws_robomaker_warehouse_ClutteringA_03.png</init_from></image>
+    <image id="Map #1123124500-image" name="Map #1123124500">
+      <init_from>../materials/textures/aws_robomaker_warehouse_ClutteringA_01.png</init_from>
+    </image>
+    <image id="Map #1123124485-image" name="Map #1123124485">
+      <init_from>../materials/textures/aws_robomaker_warehouse_ClutteringA_02.png</init_from>
+    </image>
+    <image id="Map #1123124477-image" name="Map #1123124477">
+      <init_from>../materials/textures/aws_robomaker_warehouse_ClutteringA_03.png</init_from>
+    </image>
   </library_images>
   <library_materials>
     <material id="Material #946230" name="Material #946230">
