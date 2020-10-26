@@ -69,7 +69,13 @@ gzserver worlds/small_warehouse.world
 ```
 
 2) In another terminal, setup and run GzWeb
-- Clone GzWeb and checkout the correct branch (follow http://gazebosim.org/gzweb#install-collapse-1)
+- Install GzWeb by following the [official documentation](http://gazebosim.org/gzweb#install-collapse-1):
+
+    **Important**:
+  * The recommended NodeJS versions are 4 up to version 8.  
+  * Watch out for [conflicting installations of Node/NodeJS](https://askubuntu.com/questions/695155/node-nodejs-have-different-version)
+  * See [Troubleshooting section](http://gazebosim.org/gzweb#install-collapse-3) for other issues
+  
 - Deploy GzWeb
     - Approach 1: Copy all the Gazebo models from small-warehouse world to gzweb/http/client/assets/, and run the deploy script
 
