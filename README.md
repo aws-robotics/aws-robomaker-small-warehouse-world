@@ -22,7 +22,7 @@ This Gazebo world is well suited for organizations who are building and testing 
 
 * Create or update a **.rosinstall** file in the root directory of your ROS workspace. Add the following line to **.rosintall**:
     ```
-    - git: {local-name: src/aws-robomaker-small-warehouse-world, uri: 'https://github.com/aws-robotics/aws-robomaker-small-warehouse-world.git', version: foxy-devel}
+    - git: {local-name: src/aws-robomaker-small-warehouse-world, uri: 'https://github.com/aws-robotics/aws-robomaker-small-warehouse-world.git', version: ros2}
     ```
 * Change the directory to your ROS workspace and run `rosws update`
 
@@ -40,7 +40,7 @@ This Gazebo world is well suited for organizations who are building and testing 
         warehouse_launch_path = os.path.join(warehouse_pkg_dir, 'launch')
 
         warehouse_world_cmd = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([warehouse_launch_path, '/no_roof_small_warehouse_launch.py'])
+            PythonLaunchDescriptionSource([warehouse_launch_path, '/small_warehouse.launch.py'])
         )
 
         ld = LaunchDescription()
@@ -77,7 +77,7 @@ colcon build
 
 # run in ROS2
 source install/setup.sh
-ros2 launch aws_robomaker_small_warehouse_world no_roof_small_warehouse_launch.py
+ros2 launch aws_robomaker_small_warehouse_world small_warehouse.launch.py
 ```
 
 **Visit the [AWS RoboMaker website](https://aws.amazon.com/robomaker/) to learn more about building intelligent robotic applications with Amazon Web Services.**
