@@ -63,7 +63,7 @@ To open this world in Gazebo, change the directory to your ROS workspace root fo
 
 ```bash
 export GAZEBO_MODEL_PATH=`pwd`/models
-gazebo worlds/small_warehouse.world
+gazebo worlds/small_warehouse/small_warehouse.world
 ```
 
 ## Example: Running this world directly using ROS without a simulated robot
