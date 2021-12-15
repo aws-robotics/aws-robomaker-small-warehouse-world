@@ -16,6 +16,7 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 
+import launch
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
 from launch.conditions import IfCondition
@@ -27,7 +28,8 @@ from launch_ros.actions import Node
 def generate_launch_description():
 	# Get the launch directory
 	aws_small_warehouse_dir = get_package_share_directory('aws_robomaker_small_warehouse_world')
-
+	gazebo_ros = get_package_share_directory('gazebo_ros')
+	
 	# Launch configuration variables specific to simulation
 	use_sim_time = LaunchConfiguration('use_sim_time')
 	use_simulator = LaunchConfiguration('use_simulator')
@@ -50,14 +52,16 @@ def generate_launch_description():
 		description='Full path to world model file to load')
 
 	# Specify the actions
-	start_gazebo_server_cmd = ExecuteProcess(
-		cmd=['gzserver', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so', world],
-		cwd=[aws_small_warehouse_dir], output='screen')
+    start_gazebo_server_cmd = launch.actions.IncludeLaunchDescription(
+        launch.launch_description_sources.PythonLaunchDescriptionSource(
+            os.path.join(gazebo_ros, 'launch', 'gzserver.launch.py'))
+    )
 
-	start_gazebo_client_cmd = ExecuteProcess(
-		condition=IfCondition(PythonExpression(['not ', headless])),
-		cmd=['gzclient'],
-		cwd=[aws_small_warehouse_dir], output='screen')
+    start_gazebo_client_cmd = launch.actions.IncludeLaunchDescription(
+		launch.launch_description_sources.PythonLaunchDescriptionSource(
+            os.path.join(gazebo_ros, 'launch', 'gzclient.launch.py')),
+        condition=IfCondition(PythonExpression(['not ', headless]))
+    )
 
 	# Create the launch description and populate
 	ld = LaunchDescription()
