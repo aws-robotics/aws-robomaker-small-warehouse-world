@@ -61,9 +61,18 @@ This Gazebo world is well suited for organizations who are building and testing 
 
 To open this world in Gazebo, change the directory to your ROS workspace root folder and run:
 
+If using Gazebo Garden or later:
+
 ```bash
-export GAZEBO_MODEL_PATH=`pwd`/models
-gazebo worlds/small_warehouse/small_warehouse.world
+export GZ_SIM_RESOURCE_PATH=`pwd`/models
+gz sim worlds/small_warehouse/small_warehouse.world
+```
+
+or if using Ignition Fortress or earlier:
+
+```bash
+export IGN_SIM_RESOURCE_PATH=`pwd`/models
+ign gazebo worlds/small_warehouse/small_warehouse.world
 ```
 
 ## Example: Running this world directly using ROS without a simulated robot

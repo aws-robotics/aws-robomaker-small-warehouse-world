@@ -5,14 +5,6 @@
       <inertial>
         <mass>1000</mass>
         <pose frame=''>0 0 0 0 0 0</pose>
-        <inertia>
-          <ixx>834024.533</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>459441.200</iyy>
-          <iyz>0</iyz>
-          <izz>1302083.333</izz>
-        </inertia>
       </inertial>
       <collision name="collision">
         <geometry>
