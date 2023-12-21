@@ -4,14 +4,6 @@
     <link name="link">
       <inertial>
         <mass>1000</mass>
-		<inertia>
-          <ixx>1200083.33</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>8333416.66</iyy>
-          <iyz>0</iyz>
-          <izz>2033333.33</izz>
-        </inertia>
       </inertial>
       <collision name="collision">
         <geometry>

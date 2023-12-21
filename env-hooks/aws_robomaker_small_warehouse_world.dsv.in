@@ -1,2 +1,6 @@
-prepend-non-duplicate;GAZEBO_MODEL_PATH;share/aws_robomaker_small_warehouse_world/models
-prepend-non-duplicate;GAZEBO_MODEL_PATH;share/aws_robomaker_small_warehouse_world/worlds
+prepend-non-duplicate;GZ_SIM_RESOURCE_PATH;share/aws_robomaker_small_warehouse_world/
+prepend-non-duplicate;GZ_SIM_RESOURCE_PATH;share/aws_robomaker_small_warehouse_world/models
+prepend-non-duplicate;GZ_SIM_RESOURCE_PATH;share/aws_robomaker_small_warehouse_world/worlds
+prepend-non-duplicate;IGN_GAZEBO_RESOURCE_PATH;share/aws_robomaker_small_warehouse_world/
+prepend-non-duplicate;IGN_GAZEBO_RESOURCE_PATH;share/aws_robomaker_small_warehouse_world/models
+prepend-non-duplicate;IGN_GAZEBO_RESOURCE_PATH;share/aws_robomaker_small_warehouse_world/worlds

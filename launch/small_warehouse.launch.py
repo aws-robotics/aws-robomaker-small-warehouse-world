@@ -19,7 +19,7 @@ from ament_index_python.packages import get_package_share_directory
 import launch
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
-from launch.conditions import IfCondition
+from launch.conditions import UnlessCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_ros.actions import Node
@@ -28,7 +28,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Get the launch directory
     aws_small_warehouse_dir = get_package_share_directory('aws_robomaker_small_warehouse_world')
-    gazebo_ros = get_package_share_directory('gazebo_ros')
+    ros_gz_sim = get_package_share_directory('ros_gz_sim')
     
     # Launch configuration variables specific to simulation
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -52,15 +52,18 @@ def generate_launch_description():
         description='Full path to world model file to load')
 
     # Specify the actions
-    start_gazebo_server_cmd = launch.actions.IncludeLaunchDescription(
-        launch.launch_description_sources.PythonLaunchDescriptionSource(
-            os.path.join(gazebo_ros, 'launch', 'gzserver.launch.py'))
+    # Setup to launch the simulator and Gazebo world
+    gz_sim_server_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(ros_gz_sim, 'launch', 'gz_sim.launch.py')),
+        launch_arguments={'gz_args': ['-r -s ', LaunchConfiguration('world')]}.items(),
     )
 
-    start_gazebo_client_cmd = launch.actions.IncludeLaunchDescription(
-        launch.launch_description_sources.PythonLaunchDescriptionSource(
-            os.path.join(gazebo_ros, 'launch', 'gzclient.launch.py')),
-        condition=IfCondition(PythonExpression(['not ', headless]))
+    gz_sim_client_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(ros_gz_sim, 'launch', 'gz_sim.launch.py')),
+        launch_arguments={'gz_args': '-g'}.items(),
+        condition=UnlessCondition(headless)
     )
 
     # Create the launch description and populate
@@ -72,7 +75,7 @@ def generate_launch_description():
     ld.add_action(declare_world_cmd)
 
     # Add any conditioned actions
-    ld.add_action(start_gazebo_server_cmd)
-    ld.add_action(start_gazebo_client_cmd)
+    ld.add_action(gz_sim_server_cmd)
+    ld.add_action(gz_sim_client_cmd)
 
     return ld
