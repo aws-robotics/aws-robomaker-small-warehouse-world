@@ -4,18 +4,39 @@
     
     <gravity>0 0 -9.8</gravity>
     <physics default="0" name="default_physics" type="ode">
-      <max_step_size>0.001</max_step_size>
-      <real_time_factor>1</real_time_factor>
+      <max_step_size>0.005</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
       <real_time_update_rate>1000</real_time_update_rate>
     </physics>
 
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin
+      filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
     
-        <!--model name="aws_robomaker_warehouse_RoofB_01_001">
+        <!-- <model name="aws_robomaker_warehouse_RoofB_01_001">
         <include>
             <uri>model://aws_robomaker_warehouse_RoofB_01</uri>
         </include>
         <pose frame="">0.0 0.0 0 0 0 0</pose>
-	</model-->
+	</model> -->
 
         <model name="aws_robomaker_warehouse_ShelfF_01_001">
         <include>
@@ -93,6 +114,8 @@
         </include>
         <pose frame="">-0.061684 -6.6493 0 0 0 0</pose>
 	</model-->
+
+
 
         <model name="aws_robomaker_warehouse_GroundB_01_001">
         <include>

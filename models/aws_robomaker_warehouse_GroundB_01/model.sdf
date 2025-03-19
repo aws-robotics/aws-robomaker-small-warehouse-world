@@ -4,19 +4,11 @@
     <link name="link">
       <inertial>
         <mass>1000</mass>
-		<inertia>
-          <ixx>1200083.33</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>8333416.66</iyy>
-          <iyz>0</iyz>
-          <izz>2033333.33</izz>
-        </inertia>
       </inertial>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file://models/aws_robomaker_warehouse_GroundB_01/meshes/aws_robomaker_warehouse_GroundB_01_collision.DAE</uri>
+            <uri>model://aws_robomaker_warehouse_GroundB_01/meshes/aws_robomaker_warehouse_GroundB_01_collision.DAE</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -35,7 +27,7 @@
       <visual name="visual">
 	    <geometry>
           <mesh>
-            <uri>file://models/aws_robomaker_warehouse_GroundB_01/meshes/aws_robomaker_warehouse_GroundB_01_visual.DAE</uri>
+            <uri>model://aws_robomaker_warehouse_GroundB_01/meshes/aws_robomaker_warehouse_GroundB_01_visual.DAE</uri>
           </mesh>
         </geometry>
       <meta> <layer> 1 </layer></meta>

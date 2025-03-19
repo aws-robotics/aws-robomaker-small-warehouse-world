@@ -1,23 +1,15 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <model name="aws_robomaker_warehouse_RoofB_01">
-    <link name="link">
+    <link name="body">
       <inertial>
         <mass>1000</mass>
         <pose frame=''>0 0 0 0 0 0</pose>
-        <inertia>
-          <ixx>834024.533</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>459441.200</iyy>
-          <iyz>0</iyz>
-          <izz>1302083.333</izz>
-        </inertia>
       </inertial>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file://models/aws_robomaker_warehouse_RoofB_01/meshes/aws_robomaker_warehouse_RoofB_01_collision.DAE</uri>
+            <uri>model://aws_robomaker_warehouse_RoofB_01/meshes/aws_robomaker_warehouse_RoofB_01_collision.DAE</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -45,7 +37,7 @@
       <visual name="visual">
 	    <geometry>
           <mesh>
-            <uri>file://models/aws_robomaker_warehouse_RoofB_01/meshes/aws_robomaker_warehouse_RoofB_01_visual.DAE</uri>
+            <uri>model://aws_robomaker_warehouse_RoofB_01/meshes/aws_robomaker_warehouse_RoofB_01_visual.DAE</uri>
           </mesh>
         </geometry>
       <meta> <layer> 3 </layer></meta>
