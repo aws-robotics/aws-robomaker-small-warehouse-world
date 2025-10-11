@@ -16,7 +16,7 @@
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file://models/aws_robomaker_warehouse_ClutteringA_01/meshes/aws_robomaker_warehouse_ClutteringA_01_collision.DAE</uri>
+            <uri>meshes/aws_robomaker_warehouse_ClutteringA_01_collision.DAE</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -44,10 +44,10 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>file://models/aws_robomaker_warehouse_ClutteringA_01/meshes/aws_robomaker_warehouse_ClutteringA_01_visual.DAE</uri>
+            <uri>meshes/aws_robomaker_warehouse_ClutteringA_01_visual.DAE</uri>
           </mesh>
         </geometry>
-        <meta> <layer> 1 </layer></meta>
+        <meta><layer>1</layer></meta>
       </visual>
     </link>
     <static>1</static>

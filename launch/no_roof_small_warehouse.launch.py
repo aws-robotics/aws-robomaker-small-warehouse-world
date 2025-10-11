@@ -12,25 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 
-from ament_index_python.packages import get_package_share_directory
-
-import launch
+from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    ld = launch.LaunchDescription([
-        launch.actions.IncludeLaunchDescription(
-            launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'aws_robomaker_small_warehouse_world'), '/launch/small_warehouse.launch.py']
-            ),
-            launch_arguments={
-                'world': os.path.join(get_package_share_directory('aws_robomaker_small_warehouse_world'), 'worlds', 'no_roof_small_warehouse', 'no_roof_small_warehouse.world')
-            }.items()
-        )
+    world = PathJoinSubstitution([
+        FindPackageShare('aws_robomaker_small_warehouse_world'),
+        'worlds',
+        'no_roof_small_warehouse.sdf'
     ])
-    return ld
+
+    gz_sim = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([
+                FindPackageShare('aws_robomaker_small_warehouse_world'),
+                'launch',
+                'small_warehouse.launch.py'
+            ])
+        ),
+        launch_arguments={'world': world}.items()
+    )
+
+    return LaunchDescription([gz_sim])
